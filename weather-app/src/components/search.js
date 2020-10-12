@@ -17,7 +17,7 @@ const Search = (props) =>{
                   <div id={i} key={i} onClick={props.selected}>
                     {search.title}
                         <span>
-                          <i id={i} className="material-icons">chevron_right</i>
+                          <i id={i} key={i} className="material-icons">chevron_right</i>
                         </span>
                   </div>
                   </>
