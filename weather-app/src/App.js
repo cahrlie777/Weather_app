@@ -1,7 +1,8 @@
 import React,{useState, useEffect} from 'react';
-import Search from './components/search'
-import Days from './components/days'
-import Highlights from './components/highlights'
+import Search from './components/search';
+import Days from './components/days';
+import Highlights from './components/highlights';
+import Today from './components/today';
 import './App.css';
 
 const api = {
@@ -10,7 +11,6 @@ const api = {
   img:'https://www.metaweather.com/static/img/weather/png/',
   current: 'https://www.metaweather.com/api/location/search/?lattlong='
 };
-
 
 function App() {
   const [searchState, setSearchs] = useState({});
@@ -28,7 +28,7 @@ function App() {
           fetch(`${api.location}${currentLocationWoeid}`,{mode: 'cors'})
           .then(response => response.json()).then(data => {
             console.log(data);
-            setdayStates(data);
+            setdayStates({...data, searchDisplay: false});
         });
       });
     })},[]);
@@ -50,15 +50,24 @@ function App() {
       fetch(`${api.location}${woeid}`,{mode: 'cors'})
         .then(response => response.json()).then(data => {
           console.log(data);
-          setdayStates(data);
+          setdayStates({...data,searchDisplay: false});
+          setSearchs({});
         });
   };
 
+  const displaySearch = () =>{
+    setdayStates({...dayStates,searchDisplay: true});
+  }
+
   return (
     <div className="App">
-        <Search searchEvent={search} searchs={searchState} selected={select}/>
-        <Days days={dayStates.consolidated_weather ? dayStates.consolidated_weather.slice(1): null}  />
-        <Highlights data={dayStates.consolidated_weather ? dayStates.consolidated_weather[0]: null}  />
+      {
+        dayStates.searchDisplay ? (
+          <Search  searchEvent={search} searchs={searchState} selected={select}/>):
+        <Today  data={dayStates.consolidated_weather ? dayStates.consolidated_weather[0]: null} title={dayStates.title} click={displaySearch}  />
+      }
+        <Days   days={dayStates.consolidated_weather ? dayStates.consolidated_weather.slice(1): null}  />
+        <Highlights  data={dayStates.consolidated_weather ? dayStates.consolidated_weather[0]: null}  />
     </div>
   );
 }
