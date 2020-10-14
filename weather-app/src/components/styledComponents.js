@@ -76,6 +76,7 @@ export const StyledDivToday = styled.div`
   padding: 16px 32px;
   text-decoration: none;
   cursor: pointer;
+  border-radius: 7px;
   }
   img{
     margin: 75px 0;
@@ -84,15 +85,18 @@ export const StyledDivToday = styled.div`
   h1
   {
   width: 100%;
-  font-size: 5vw;
+  font-size: 10vw;
   margin: 0 auto;
   }
   h3{
   margin: 90px auto;
   font-family: "Tahoma";
-  font-size: 3vw;
+  font-size: 5vw;
+  color: #3E4158;
   }
-
+  p{
+    color: #53536C;
+  }
 @media only screen and (min-width: 800px) {
   grid-area: sidebar;
   text-align: center;
@@ -121,6 +125,10 @@ export const StyledDivToday = styled.div`
   margin: 90px auto;
   font-family: "Tahoma";
   font-size: 3vw;
+  color: #3E4158;
+  }
+  p{
+    color: #53536C;
   }
 }
 `;
@@ -131,9 +139,18 @@ export const StyledDivSearch = styled.div`
   text-align: center;
   background: #1E213A;
   height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  #clearIcon{
+  display: block;
+  margin-left: 90%;
+  margin-top: 5%;
+  margin-bottom: 0;
+  }
 
   input{
-  margin: 50px auto;
+  margin: 30px auto;
   border-radius: 4px;
   font-size: 3vw;
   background: #1E213A;
@@ -171,6 +188,10 @@ export const StyledDivSearch = styled.div`
   height: 100vh;
   overflow-y: auto;
   overflow-x: hidden;
+
+  #clearIcon{
+  display: block;
+  }
 
   input{
   margin: 50px auto;

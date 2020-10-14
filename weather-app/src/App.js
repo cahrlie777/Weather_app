@@ -16,6 +16,7 @@ function App() {
   const [searchState, setSearchs] = useState({});
   const [dayStates, setdayStates] = useState({});
 
+  //get current location data
   useEffect(() =>{
       navigator.geolocation.getCurrentPosition( function(position) {
       const latitude = position.coords.latitude;
@@ -55,15 +56,20 @@ function App() {
         });
   };
 
+  const onClose = () =>{
+      setdayStates({...dayStates,searchDisplay: false});
+      setSearchs({});
+  };
+
   const displaySearch = () =>{
     setdayStates({...dayStates,searchDisplay: true});
-  }
+  };
 
   return (
     <div className="App">
       {
         dayStates.searchDisplay ? (
-          <Search  searchEvent={search} searchs={searchState} selected={select}/>):
+          <Search   close={onClose} searchEvent={search} searchs={searchState} selected={select}/>):
         <Today  data={dayStates.consolidated_weather ? dayStates.consolidated_weather[0]: null} title={dayStates.title} click={displaySearch}  />
       }
         <Days   days={dayStates.consolidated_weather ? dayStates.consolidated_weather.slice(1): null}  />

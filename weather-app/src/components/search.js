@@ -5,6 +5,7 @@ const Search = (props) =>{
   return (
     <>
     <StyledDivSearch>
+      <i id="clearIcon" className="material-icons" onClick={props.close}>clear</i>
       <input
         type='text'
         placeholder='search...'
