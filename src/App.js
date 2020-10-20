@@ -6,10 +6,11 @@ import Today from './components/today';
 import './App.css';
 
 const api = {
-  base: 'https://www.metaweather.com/api/location/search/?query=',
-  location:'https://www.metaweather.com/api/location/',
-  img:'https://www.metaweather.com/static/img/weather/png/',
-  current: 'https://www.metaweather.com/api/location/search/?lattlong='
+
+  base: 'https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=',
+  location:'https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/',
+  img:'https://cors-anywhere.herokuapp.com/https://www.metaweather.com/static/img/weather/png/',
+  current: 'https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?lattlong='
 };
 
 function App() {
